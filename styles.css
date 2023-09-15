@@ -1,0 +1,39 @@
+.border {
+    height: 25%;
+    width: 25%;
+    border: 2px solid black;
+
+    
+   }
+
+.container {
+    height: 500px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.verticalDiv {
+    display: flex;
+    height: 31.25px;
+    width: auto;
+    border: 1px solid black;
+
+
+
+}
+.horizontalDiv {
+    border: 1px solid black;
+    height: 31.25px;
+    width: 31.25px;
+
+}
