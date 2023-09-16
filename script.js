@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const resetButton = document.getElementById('reset');
     const container = document.createElement('div');
+    const colorInput = document.getElementById('color')
     container.classList.add('container');
 
     function removeAllGridElements() {
@@ -11,9 +12,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    let color = "black"
+    createGrid(16, color)
+    
 
     
-    function createGrid(num) {
+    function createGrid(num, color) {
 
         if (reset) {
             removeAllGridElements();
@@ -29,37 +33,45 @@ document.addEventListener('DOMContentLoaded', function() {
                 const tempHorizontalDiv = document.createElement('div');
                 tempHorizontalDiv.classList.add('horizontalDiv');
                 tempVerticalDiv.appendChild(tempHorizontalDiv);
-                tempHorizontalDiv.style.height = 500/num + 'px';
-                tempHorizontalDiv.style.width = 500/num + 'px';
+                tempHorizontalDiv.style.height = 450/num + 'px';
+                tempHorizontalDiv.style.width = 450/num + 'px';
 
                 tempHorizontalDiv.addEventListener('mouseover', () => {
-                    // Change the button's background color
-                    tempHorizontalDiv.style.backgroundColor = 'black';
+                    colorInput.addEventListener('input', () => {
+                        
+                        color = colorInput.value;
+                    });
+                    tempHorizontalDiv.style.backgroundColor = color;
                 });
             }
 
         }
     }
+    
 
-    createGrid(16)
-
+    
 
 
     resetButton.addEventListener('click', () => {
+
         const userInput = parseInt(prompt("How Many Squares Per Side (Max 100)?:"));
         if (isNaN(userInput) || userInput > 100 || userInput <= 0 ) {
             alert("Enter a postive integer within the range 1-100")
             createGrid(16)
         }
-        createGrid(userInput)
+        else {
+            createGrid(userInput,colorInput.value)
+
+        }
       });
 
+    const place = document.getElementById('placeHolder')
 
-    document.body.appendChild(container);
+    place.appendChild(container)
 
+    document.body.appendChild(etch)
 
-
-
+    
 
 
 
