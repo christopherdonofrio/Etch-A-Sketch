@@ -54,10 +54,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     resetButton.addEventListener('click', () => {
 
-        const userInput = parseInt(prompt("How Many Squares Per Side (Max 100)?:"));
+        const userInput = prompt("How Many Squares Per Side (Max 100)?:");
+
+        if (userInput === null) {
+            // User pressed "Cancel," do nothing
+            createGrid(16)
+        }
+
+        const parsedInput = parseInt(userInput);        
         if (isNaN(userInput) || userInput > 100 || userInput <= 0 ) {
             alert("Enter a postive integer within the range 1-100")
-            createGrid(16)
+            createGrid(16, color)
         }
         else {
             createGrid(userInput,colorInput.value)
